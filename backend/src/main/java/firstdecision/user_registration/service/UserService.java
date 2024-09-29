@@ -57,6 +57,14 @@ public class UserService {
     if (!StringUtils.hasLength(userDTO.getPassword()) || userDTO.getPassword().length() < 6 || userDTO.getPassword().length() > 20) {
       throw new Exception("A senha deve ter entre 6 e 20 caracteres.");
     }
+
+    if (!StringUtils.hasLength(userDTO.getPassword()) || userDTO.getPassword().length() < 6 || userDTO.getPassword().length() > 20) {
+      throw new Exception("A senha deve ter entre 6 e 20 caracteres.");
+    }
+
+    if (!userDTO.getPassword().equals(userDTO.getPasswordConfirm())) {
+      throw new Exception("As senhas não coincidem.");
+    }
   }
 
   public LoginResponseDTO authenticateUser(LoginDTO loginDTO) throws Exception {

@@ -1,5 +1,9 @@
 package firstdecision.user_registration.controller;
 
+import java.util.Collections;
+
+import java.util.Map;
+import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +29,7 @@ public class UserController {
       User user = userService.registerUser(userDTO);
       return ResponseEntity.ok(user);
     } catch (Exception e) {
-      return ResponseEntity.badRequest().body(e.getMessage());
+      return ResponseEntity.badRequest().body(Collections.singletonMap("message", e.getMessage()));
     }
   }
 
@@ -35,7 +39,9 @@ public class UserController {
           LoginResponseDTO response = userService.authenticateUser(loginDTO);
           return ResponseEntity.ok(response);
       } catch (Exception e) {
-          return ResponseEntity.status(401).body(e.getMessage());
+          Map<String, String> errorResponse = new HashMap<>();
+          errorResponse.put("message", e.getMessage());
+          return ResponseEntity.status(401).body(errorResponse);
       }
   }
 

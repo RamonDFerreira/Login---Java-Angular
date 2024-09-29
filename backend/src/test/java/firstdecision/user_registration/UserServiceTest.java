@@ -34,6 +34,7 @@ class UserServiceTest {
     userDTO.setName("Teste User");
     userDTO.setEmail("teste@example.com");
     userDTO.setPassword("password123");
+    userDTO.setPasswordConfirm("password123");
 
     // Configurar o comportamento do mock para passwordEncoder.encode()
     when(passwordEncoder.encode("password123")).thenReturn("encodedPassword123");
@@ -47,6 +48,7 @@ class UserServiceTest {
     savedUser.setName(userDTO.getName());
     savedUser.setEmail(userDTO.getEmail());
     savedUser.setPassword("encodedPassword123");
+    
 
     when(userRepository.save(any(User.class))).thenReturn(savedUser);
 
