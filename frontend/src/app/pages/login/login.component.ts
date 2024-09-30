@@ -7,8 +7,8 @@ import { LoginService } from '../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
 
 interface LoginForm {
-  email: FormControl,
-  password: FormControl
+  email: FormControl;
+  password: FormControl;
 }
 
 @Component({
@@ -23,7 +23,7 @@ interface LoginForm {
     LoginService
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrls: ['./login.component.scss'] 
 })
 export class LoginComponent {
   loginForm!: FormGroup<LoginForm>;
@@ -36,23 +36,23 @@ export class LoginComponent {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)])
-    })
+    });
   }
 
-  submit(){
+  submit(){ 
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
       next: () => {
-        this.toastService.success("Login feito com sucesso!")
-        this.router.navigate(["user"])
+        this.toastService.success("Login feito com sucesso!");
+        this.router.navigate(["user"]);
       },
       error: (err) => {
         const errorMessage = err.error?.message || "Erro inesperado! Tente novamente mais tarde";
         this.toastService.error(errorMessage);
       }
-    })
+    });
   }
 
   navigate(){
-    this.router.navigate(["signup"])
+    this.router.navigate(["signup"]);
   }
 }
