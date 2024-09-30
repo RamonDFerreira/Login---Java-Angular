@@ -18,7 +18,14 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable()) // Desabilita CSRF
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/**").permitAll() // Permite acesso público a estas rotas
+                .requestMatchers(
+                    "/auth/**", 
+                    "/v3/api-docs/**",
+                    "/swagger-ui/**",
+                    "/swagger-ui.html",
+                    "/swagger-resources/**",
+                    "/webjars/**"
+                    ).permitAll() // Permite acesso público a estas rotas
                 .anyRequest().authenticated() // Exige autenticação para todas as outras rotas
             )
             .sessionManagement(session -> session
