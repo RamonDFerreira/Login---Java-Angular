@@ -27,7 +27,6 @@
 
 - **Frontend:**
   - [Angular](https://angular.io/) - Framework para construção de interfaces web.
-  - [Nginx](https://www.nginx.com/) - Servidor web para servir o frontend e atuar como proxy reverso.
 
 - **Backend:**
   - [Spring Boot](https://spring.io/projects/spring-boot) - Framework para desenvolvimento de aplicações Java.
@@ -79,7 +78,7 @@ http://localhost:8080/swagger-ui/index.html
 
 ### 📦 Pré-requisitos
 
-- [Docker](https://www.docker.com/get-started) instalado na sua máquina.
+- [Docker](https://www.docker.com/get-started) instalado na sua máquina e o mesmo deve estar sendo executado.
 - [Docker Compose](https://docs.docker.com/compose/install/) instalado.
 
 ### 🔧 Passos para Iniciar com Docker
