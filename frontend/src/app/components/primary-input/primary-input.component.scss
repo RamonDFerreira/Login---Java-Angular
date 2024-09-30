@@ -5,34 +5,30 @@
     font-size: 16px;
     text-align: start;
 
-    label {
-        margin-bottom: 10px;
+    .full-width {
+        width: 100%;
     }
 
-    .input-content {
-        width: 100%;
-        
-        border-radius: 8px;
+    .icon {
+        padding: 14px;
+        background-color: $primary-color;
+        border-radius: 0 4px 4px 0;
         display: flex;
-        
-        .icon {
-            padding: 12px;
-            background-color: $primary-color;
-            border-radius: 0 8px 8px 0;
+        align-items: center;
 
-            img {
-                height: 20px;
-            }
+        img {
+            height: 20px;
+        }
+    }
+
+    mat-form-field {
+        width: 100%;
+        .mat-form-field-outline {
+            border-radius: 8px;
         }
 
         input {
-            border: none;
-            border-radius: 8px 0 0 8px;
-            background-color: $gray-secondary-bg;
-            border-color: $border-color;
             color: $text-color;
-            padding: 12px 0 12px 20px;
-            width: 100%;
         }
 
         input::placeholder {
