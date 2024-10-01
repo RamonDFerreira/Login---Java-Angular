@@ -15,7 +15,7 @@ import firstdecision.user_registration.model.User;
 import firstdecision.user_registration.service.UserService;
 
 /* Configuração de CORS para permitir chamadas do front-end */
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost")
 @RestController
 @RequestMapping("/auth")
 public class UserController {

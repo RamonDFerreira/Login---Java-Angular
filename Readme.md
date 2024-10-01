@@ -97,7 +97,7 @@ http://localhost:8080/swagger-ui/index.html
 
   - Abra o navegador e acesse:
 ```
-http://localhost:4200
+http://localhost
 ```
 - Backend (API Spring Boot):
 

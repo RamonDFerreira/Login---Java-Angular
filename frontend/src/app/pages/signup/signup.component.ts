@@ -1,3 +1,5 @@
+// src/app/pages/signup/signup.component.ts
+
 import { Component } from '@angular/core';
 import { DefaultLoginLayoutComponent } from '../../components/default-login-layout/default-login-layout.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
@@ -89,8 +91,24 @@ export class SignUpComponent {
 
   passwordMatchValidator(group: AbstractControl): ValidationErrors | null {
     const password = group.get('password')?.value;
-    const passwordConfirm = group.get('passwordConfirm')?.value;
-    return password === passwordConfirm ? null : { passwordMismatch: true };
+    const passwordConfirm = group.get('passwordConfirm');
+
+    if (password !== passwordConfirm?.value) {
+      passwordConfirm?.setErrors({ passwordMismatch: true });
+    } else {
+      if (passwordConfirm?.hasError('passwordMismatch')) {
+        // Remove apenas o erro de mismatch sem afetar outros erros
+        const errors = { ...passwordConfirm.errors };
+        delete errors['passwordMismatch'];
+        if (Object.keys(errors).length === 0) {
+          passwordConfirm.setErrors(null);
+        } else {
+          passwordConfirm.setErrors(errors);
+        }
+      }
+    }
+
+    return null; // Retorna null para não atribuir erros ao FormGroup
   }
 
   submit(){

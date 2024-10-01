@@ -13,13 +13,13 @@
         <mat-form-field appearance="outline" class="full-width">
             <mat-label>E-mail</mat-label>
             <span matPrefix>
-                <img src="/assets/svg/email-icon.svg" alt="Email Icon" class="input-icon"/>
+                <mat-icon class="input-icon">email</mat-icon>
             </span>
             <input matInput placeholder="Seu e-mail" formControlName="email" type="email">
             
             <!-- Priorizar o erro do TLD antes do erro padrão -->
             <mat-error *ngIf="loginForm.get('email')?.hasError('emailTLD')">
-                Por favor, insira um email válido com um domínio (ex: .com, .br, .gov)
+                Insira um email válido com um domínio (ex: .com, com.br)
             </mat-error>
             <mat-error *ngIf="loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('emailTLD')">
                 Email inválido
@@ -33,7 +33,7 @@
         <mat-form-field appearance="outline" class="full-width">
             <mat-label>Senha</mat-label>
             <span matPrefix>
-                <img src="/assets/svg/password-icon.svg" alt="Password Icon" class="input-icon"/>
+                <mat-icon class="input-icon">lock</mat-icon>
             </span>
             <input matInput placeholder="Sua senha" formControlName="password" type="password">
             <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
