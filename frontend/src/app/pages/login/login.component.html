@@ -1,3 +1,5 @@
+<!-- src/app/pages/login/login.component.html -->
+
 <app-default-login-layout
     title="Acesse a sua conta"
     primaryBtnText="Entrar"
@@ -6,25 +8,48 @@
     (navigate)="navigate()"
     [disablePrimaryBtn]="!loginForm.valid"
 >
-    <form [formGroup]="loginForm">
-        <app-primary-input
-            formControlName="email"
-            inputName="email"
-            type="email"
-            label="E-mail"
-            placeholder="Seu e-mail"
-        >
-            <img src="/assets/svg/email-icon.svg"/>
-        </app-primary-input>
-        <app-primary-input
-            formControlName="password"
-            inputName="password"
-            type="password"
-            label="Senha"
-            placeholder="Sua senha"
-        >
-        <img src="/assets/svg/password-icon.svg"/>
-    </app-primary-input>
-    <span>Esqueci minha senha</span>
+    <form [formGroup]="loginForm" class="login-form">
+        <!-- Campo E-mail -->
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>E-mail</mat-label>
+            <span matPrefix>
+                <img src="/assets/svg/email-icon.svg" alt="Email Icon" class="input-icon"/>
+            </span>
+            <input matInput placeholder="Seu e-mail" formControlName="email" type="email">
+            
+            <!-- Priorizar o erro do TLD antes do erro padrão -->
+            <mat-error *ngIf="loginForm.get('email')?.hasError('emailTLD')">
+                Por favor, insira um email válido com um domínio (ex: .com, .br, .gov)
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('emailTLD')">
+                Email inválido
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required') && !loginForm.get('email')?.hasError('emailTLD') && !loginForm.get('email')?.hasError('email')">
+                Este campo é obrigatório
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Campo Senha -->
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Senha</mat-label>
+            <span matPrefix>
+                <img src="/assets/svg/password-icon.svg" alt="Password Icon" class="input-icon"/>
+            </span>
+            <input matInput placeholder="Sua senha" formControlName="password" type="password">
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+                Este campo é obrigatório
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+                A senha deve ter no mínimo 6 caracteres
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('maxlength')">
+                A senha deve ter no máximo 20 caracteres
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Link Esqueci Minha Senha -->
+        <div class="forgot-password">
+            <a href="#" (click)="forgotPassword()">Esqueci minha senha</a>
+        </div>
     </form>
 </app-default-login-layout>

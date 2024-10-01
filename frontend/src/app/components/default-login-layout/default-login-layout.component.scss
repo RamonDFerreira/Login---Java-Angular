@@ -33,7 +33,7 @@ main {
     }
 
     .form-section {
-        min-width: 25%;
+        min-width: 480px;
         flex-grow: 0.3;
         padding: 0 35px;
         background-color: #2F4F4F;
@@ -45,7 +45,6 @@ main {
         h2 {
             font-size: 20px;
             font-weight: bold;
-            margin-bottom: 45px;
         }
 
         .btn-wrapper {
@@ -55,7 +54,7 @@ main {
             align-items: center;
             justify-content: center;
             width: 100%;
-            gap: 30px;
+            gap: 12px;
 
             .divider {
                 display: flex;
