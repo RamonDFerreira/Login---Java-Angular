@@ -101,7 +101,7 @@ http://localhost
 ```
 - Backend (API Spring Boot):
 
-  - A API estará disponível em:
+  - A documentação da API estará disponível em:
 ```
-http://localhost:8080
+http://localhost:8080/swagger-ui/index.html
 ```
