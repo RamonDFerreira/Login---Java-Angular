@@ -10,7 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { CommonModule } from '@angular/common'; // Importação necessária
+import { CommonModule } from '@angular/common'; 
 
 interface SignupForm {
   name: FormControl;
@@ -108,7 +108,7 @@ export class SignUpComponent {
       }
     }
 
-    return null; // Retorna null para não atribuir erros ao FormGroup
+    return null; 
   }
 
   submit(){
